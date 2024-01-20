@@ -4,13 +4,13 @@ const { ObjectId } = mongoose.Schema.Types;
 const cardSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 30,
+    required: [true, 'Заполните поле'],
+    minlength: [2, 'Минимальная длина поля - 2 символа'],
+    maxlength: [30, 'Максимальная длина поля - 30 символов'],
   },
   link: {
     type: String,
-    required: true,
+    required: [true, 'Заполните поле'],
   },
   owner: {
     type: ObjectId,
@@ -27,6 +27,6 @@ const cardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('card', cardSchema);
