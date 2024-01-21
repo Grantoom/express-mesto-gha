@@ -24,11 +24,8 @@ app.use('*', (req, res) => {
 });
 app.use(helmet());
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
-  .then(() => {
-    console.log('MongoDB connected');
-  });
-
-app.listen(PORT, () => {
-  console.log('Server started on port 3000');
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+  useUnifiedTopology: true,
 });
+
+app.listen(PORT);
