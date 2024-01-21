@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,
     required: [true, 'Заполните поле'],
-  }
+  },
 }, { versionKey: false });
 
 module.exports = mongoose.model('user', userSchema);
