@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { ObjectId } = mongoose.Schema.Types;
 
 const cardSchema = new mongoose.Schema({
@@ -19,9 +20,9 @@ const cardSchema = new mongoose.Schema({
   },
   likes: [
     {
-    type: ObjectId,
-    default: [],
-    }
+      type: ObjectId,
+      default: [],
+    },
   ],
   createdAt: {
     type: Date,
