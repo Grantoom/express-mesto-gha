@@ -40,7 +40,7 @@ module.exports.getUserById = (req, res) => {
 module.exports.updateUser = (req, res) => {
   const { name, about } = req.body;
 
-  User.findByIdAndUpdate(req.user._id, { name: req.body.name, about: req.body.about }, {
+  User.findByIdAndUpdate(req.user._id, { name, about }, {
     new: true,
     runValidators: true,
   })
@@ -52,7 +52,7 @@ module.exports.updateUser = (req, res) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return res.status(400).send({ message: 'Переданы неккоректные данные' });
+        return res.status(400).send({ message: 'Переданы некорректные данные' });
       }
       return res.status(500).send({ message: 'Ошибка на сервере' });
     });
