@@ -1,13 +1,13 @@
 /** Celebrate-валидатор */
 
 const { celebrate, Joi } = require('celebrate');
-const { urlRegex } = require('../utils/urlRegex');
+const { urlRegex } = require('../utils/url_regex');
 
 const validateCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(urlRegex),
+    avatar: Joi.string().regex(urlRegex),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
@@ -35,14 +35,14 @@ const validateUserInfo = celebrate({
 
 const validateUserAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().pattern(urlRegex),
+    avatar: Joi.string().required().regex(urlRegex),
   }),
 });
 
 const validateCard = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().pattern(urlRegex),
+    link: Joi.string().required().regex(urlRegex),
   }),
 });
 
@@ -59,5 +59,5 @@ module.exports = {
   validateUserInfo,
   validateUserAvatar,
   validateCard,
-  validateCardId
+  validateCardId,
 };

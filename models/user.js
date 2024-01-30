@@ -1,24 +1,20 @@
 const mongoose = require('mongoose');
+
 const bcrypt = require('bcryptjs');
 const { isEmail, isURL } = require('validator');
 const Unauthorized = require('../errors/Unauthorized');
 
-/** Схема пользователя
- * name - имя пользователя, about - подпись пользователя, avatar - ссылка на аватар
- * email - email пользователя, password - хэш пароля
- */
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    minlength: 2,
-    maxlength: 30,
+    minlength: [2, 'Минимальная длина поля - 2 символа'],
+    maxlength: [30, 'Максимальная длина поля - 30 символов'],
     default: 'Жак-Ив Кусто',
   },
   about: {
     type: String,
-    minlength: 2,
-    maxlength: 30,
+    minlength: [2, 'Минимальная длина поля - 2 символа'],
+    maxlength: [30, 'Максимальная длина поля - 30 символов'],
     default: 'Исследователь',
   },
   avatar: {
