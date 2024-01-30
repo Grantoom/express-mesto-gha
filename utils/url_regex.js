@@ -1,5 +1,5 @@
-const url_regex = /^https?:\/\/(www\.)?[\w\-_~:\/#\[\]@!&',;=]+\.[\w\-_~:\/#\[\]@!&',;=а-я]+#?/i;
+const urlegex = /^https?:\/\/(www\.)?[\w\-_~:\/#\[\]@!&',;=]+\.[\w\-_~:\/#\[\]@!&',;=а-я]+#?/i;
 
 module.exports = {
-  url_regex
+  url_regex,
 };

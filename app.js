@@ -21,14 +21,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
 app.post('/signin', validateLogin, login);
-app.post('/signup', validateCreateUser,createUser);
+app.post('/signup', validateCreateUser, createUser);
 
 app.use(auth);
 
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
-app.use('*', (req, res) => {
+app.use('*', (req, res, next) => {
   next(new NotFoundError('Ресурс не найден'));
 });
 

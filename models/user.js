@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const Unauthorized = require('../errors/Unauthorized');
 const { isEmail, isURL } = require('validator');
+const Unauthorized = require('../errors/Unauthorized');
 
 /** Схема пользователя
  * name - имя пользователя, about - подпись пользователя, avatar - ссылка на аватар
@@ -41,12 +41,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 8,
-    select: false
-  }
+    select: false,
+  },
 });
 
-userSchema.statics.findUserByCredentials = (email, password) => {
+userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
