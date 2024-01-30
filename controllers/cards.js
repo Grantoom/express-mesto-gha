@@ -36,7 +36,7 @@ module.exports.deleteCard = (req, res, next) => {
         return;
       }
 
-      Card.findByIdAndDelete(cardId).then(() => res.send({ message: 'Карточка удалена' })).catch(next);
+      Card.deleteOne(card).then(() => res.send({ message: 'Карточка удалена' })).catch(next);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
